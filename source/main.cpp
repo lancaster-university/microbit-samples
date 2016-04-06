@@ -8,7 +8,7 @@ int main()
     uBit.init();
 
     // Insert your code here!
-    uBit.display.scroll("BELLO! :)");
+    uBit.display.scroll("HELLO WORLD! :)");
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
     // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
