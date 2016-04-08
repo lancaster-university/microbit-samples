@@ -24,19 +24,51 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
+#include "MicroBitSamples.h"
+
+#ifdef MICROBIT_SAMPLE_ACCELEROMETER_DEMO
 
 MicroBit uBit;
+
+//
+// Scales the given value that is in the -1024 to 1024 range
+// int a value between 0 and 4.
+//
+int pixel_from_g(int value)
+{
+    int x = 0;
+
+    if (value > -750)
+        x++;
+    if (value > -250)
+        x++;
+    if (value > 250)
+        x++;
+    if (value > 750)
+        x++;
+
+    return x;
+}
 
 int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
 
-    // Insert your code here!
-    uBit.display.scroll("HELLO WORLD! :)");
+    //
+    // Periodically read the accelerometer x and y values, and plot a 
+    // scaled version of this ont the display. 
+    //
+    while(1)
+    {
+        int x = pixel_from_g(uBit.accelerometer.getX());
+        int y = pixel_from_g(uBit.accelerometer.getY());
 
-    // If main exits, there may still be other fibers running or registered event handlers etc.
-    // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
-    // sit in the idle task forever, in a power efficient sleep.
-    release_fiber();
+        uBit.display.image.clear();
+        uBit.display.image.setPixelValue(x, y, 255);
+        
+        uBit.sleep(100);
+    }
 }
+
+#endif
