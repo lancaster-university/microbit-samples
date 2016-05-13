@@ -4,7 +4,7 @@
   "description": "The micro:bit runtime common abstraction with examples.",
   "license": "MIT",
   "dependencies": {
-    "microbit": "lancaster-university/microbit#v2.0.0-rc3"
+    "microbit": "lancaster-university/microbit"
   },
   "targetDependencies": {},
   "bin": "./source"
