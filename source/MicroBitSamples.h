@@ -45,6 +45,7 @@ DEALINGS IN THE SOFTWARE.
 //#define     MICROBIT_SAMPLE_GREYSCALE
 //#define     MICROBIT_SAMPLE_LOGIC_GATES
 //#define     MICROBIT_SAMPLE_SNAKE
+//#define     MICROBIT_SAMPLE_INVADERS
 
 //
 // Examples using MicroBitRadio.
