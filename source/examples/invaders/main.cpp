@@ -37,12 +37,9 @@ DEALINGS IN THE SOFTWARE.
 //
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
 
 #define GAME_ON         0
 #define GAME_OVER       1
-
-#ifdef MICROBIT_SAMPLE_INVADERS
 
 struct Point
 {
@@ -293,4 +290,3 @@ int main()
         spaceInvaders();
 }
 
-#endif

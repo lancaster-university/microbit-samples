@@ -24,9 +24,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
-
-#ifdef MICROBIT_SAMPLE_SIMPLE_ANIMATION
 
 MicroBit uBit;
 
@@ -35,11 +32,12 @@ int main()
     // Initialise the micro:bit runtime.
     uBit.init();
 
-    // Setup a simple triangular waveform.
-    MicroBitImage img("1 0 0 0 0 0 0 0 0 1\n0 1 0 0 0 0 0 0 1 0\n0 0 1 0 0 0 0 1 0 0\n0 0 0 1 0 0 1 0 0 0\n0 0 0 0 1 1 0 0 0 0\n");
-     
-    while(1)
-        uBit.display.scroll(img, 80, -1);
+    // Insert your code here!
+    uBit.display.scroll("HELLO WORLD! :)");
+
+    // If main exits, there may still be other fibers running or registered event handlers etc.
+    // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
+    // sit in the idle task forever, in a power efficient sleep.
+    release_fiber();
 }
 
-#endif

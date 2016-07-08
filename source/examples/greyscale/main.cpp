@@ -24,33 +24,31 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
 
-#ifdef MICROBIT_SAMPLE_SIMPLE_RADIO_RX
-
-MicroBit    uBit;
-
-void onData(MicroBitEvent)
-{
-    ManagedString s = uBit.radio.datagram.recv();
-
-    if (s == "1")
-        uBit.display.print("A");
-
-    if (s == "2")
-        uBit.display.print("B");
-}
+MicroBit uBit;
 
 int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
 
-    uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);
-    uBit.radio.enable();
+    // Enable per pixel rendering, with 256 level of brightness per pixel.
+    uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
 
+    // Draw a rainbow brightness effect across the display
+    int value = 1;
+
+    for(int j = 0; j < 5; j++)
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            uBit.display.image.setPixelValue(i,j,value);
+            value += 10;
+        }
+    }
+   
+    // Nothing else to do, so enter a power efficient sleep.    
     while(1)
-        uBit.sleep(1000);
+        uBit.sleep(10000);
 }
 
-#endif

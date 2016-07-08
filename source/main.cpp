@@ -24,29 +24,20 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
 
-#ifdef MICROBIT_SAMPLE_SIMPLE_RADIO_TX
-
-MicroBit    uBit;
+MicroBit uBit;
 
 int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
-    uBit.radio.enable();
 
-    while(1)
-    {
-        if (uBit.buttonA.isPressed())
-            uBit.radio.datagram.send("1");
+    // Insert your code here!
+    uBit.display.scroll("HELLO WORLD! :)");
 
-        else if (uBit.buttonB.isPressed())
-            uBit.radio.datagram.send("2");
-
-        uBit.sleep(100);
-    }
-
+    // If main exits, there may still be other fibers running or registered event handlers etc.
+    // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
+    // sit in the idle task forever, in a power efficient sleep.
+    release_fiber();
 }
 
-#endif

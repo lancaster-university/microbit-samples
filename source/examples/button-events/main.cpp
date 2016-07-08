@@ -24,9 +24,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
-
-#ifdef MICROBIT_SAMPLE_BUTTON_EVENTS
 
 MicroBit uBit;
 
@@ -101,4 +98,3 @@ int main()
         uBit.sleep(10000);
 }
 
-#endif

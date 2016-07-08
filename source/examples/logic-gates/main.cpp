@@ -24,9 +24,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
-
-#ifdef MICROBIT_SAMPLE_LOGIC_GATES
 
 #define LOGIC_MODE_NOT            1
 #define LOGIC_MODE_AND            2
@@ -165,4 +162,3 @@ int main()
     }
 }    
 
-#endif

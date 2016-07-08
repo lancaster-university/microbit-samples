@@ -24,35 +24,47 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
-
-#ifdef MICROBIT_SAMPLE_GREYSCALE
 
 MicroBit uBit;
+
+//
+// Scales the given value that is in the -1024 to 1024 range
+// int a value between 0 and 4.
+//
+int pixel_from_g(int value)
+{
+    int x = 0;
+
+    if (value > -750)
+        x++;
+    if (value > -250)
+        x++;
+    if (value > 250)
+        x++;
+    if (value > 750)
+        x++;
+
+    return x;
+}
 
 int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
 
-    // Enable per pixel rendering, with 256 level of brightness per pixel.
-    uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
-
-    // Draw a rainbow brightness effect across the display
-    int value = 1;
-
-    for(int j = 0; j < 5; j++)
-    {
-        for(int i = 0; i < 5; i++)
-        {
-            uBit.display.image.setPixelValue(i,j,value);
-            value += 10;
-        }
-    }
-   
-    // Nothing else to do, so enter a power efficient sleep.    
+    //
+    // Periodically read the accelerometer x and y values, and plot a 
+    // scaled version of this ont the display. 
+    //
     while(1)
-        uBit.sleep(10000);
+    {
+        int x = pixel_from_g(uBit.accelerometer.getX());
+        int y = pixel_from_g(uBit.accelerometer.getY());
+
+        uBit.display.image.clear();
+        uBit.display.image.setPixelValue(x, y, 255);
+        
+        uBit.sleep(100);
+    }
 }
 
-#endif

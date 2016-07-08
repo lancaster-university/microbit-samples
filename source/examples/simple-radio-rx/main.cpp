@@ -23,45 +23,30 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef MICROBIT_SAMPLES_H
-#define MICROBIT_SAMPLES_H
+#include "MicroBit.h"
 
+MicroBit    uBit;
 
-//
-// Uncomment ONE of the following #defines to select which sample to build.
-// Afterwards, save this file and build the project. The resulting HEX
-// file will contain your chosen sample.
-//
+void onData(MicroBitEvent)
+{
+    ManagedString s = uBit.radio.datagram.recv();
 
+    if (s == "1")
+        uBit.display.print("A");
 
-//
-// Introductory examples using the uBit object.
-//
+    if (s == "2")
+        uBit.display.print("B");
+}
 
-#define     MICROBIT_SAMPLE_HELLO_WORLD
-//#define     MICROBIT_SAMPLE_ACCELEROMETER_DEMO
-//#define     MICROBIT_SAMPLE_BUTTON_EVENTS
-//#define     MICROBIT_SAMPLE_SIMPLE_ANIMATION
-//#define     MICROBIT_SAMPLE_GREYSCALE
-//#define     MICROBIT_SAMPLE_LOGIC_GATES
-//#define     MICROBIT_SAMPLE_SNAKE
-//#define     MICROBIT_SAMPLE_INVADERS
+int main()
+{
+    // Initialise the micro:bit runtime.
+    uBit.init();
 
-//
-// Examples using MicroBitRadio.
-//
-// n.b. you MUST disable the BLE stack to run these samples.
-// Do this by setting "#define MICROBIT_BLE_ENABLED 0" in your MicroBitConfig.h file.
-//
-// For yotta based environments this file is located at: 
-//   "yotta_modules/microbit-dal/inc/core/MicroBitConfig.h"
-//
-// For project compiling on mbed.org, it is located at: 
-//   "microbit/microbit-dal/inc/core/MicroBitConfig.h"
-//
+    uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);
+    uBit.radio.enable();
 
-//#define     MICROBIT_SAMPLE_SIMPLE_RADIO_TX
-//#define     MICROBIT_SAMPLE_SIMPLE_RADIO_RX
+    while(1)
+        uBit.sleep(1000);
+}
 
-
-#endif

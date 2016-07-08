@@ -24,9 +24,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
-#include "MicroBitSamples.h"
-
-#ifdef MICROBIT_SAMPLE_SNAKE
 
 #define SNAKE_EMPTY 0
 #define SNAKE_UP    1
@@ -203,4 +200,3 @@ int main()
         snake();
 }
 
-#endif
