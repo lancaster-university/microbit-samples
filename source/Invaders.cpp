@@ -55,6 +55,7 @@ MicroBitImage   invaders(5,5);
 int             score;
 int             game_over;
 int             level;
+int             INVADER_SPEED = 750;
 int             PLAYER_SPEED = 150;
 int             BULLET_SPEED = 50;
 Point           player;
@@ -74,7 +75,7 @@ addRow()
     // Otherwise, move down the invaders, and add a new role at the top.
     invaders.shiftDown(1);
 
-    for (int x=0; x<5; x++)
+    for (int x=1; x<4; x++)
         invaders.setPixelValue(x,0,255);
 
     return GAME_ON;
@@ -98,7 +99,7 @@ gameOver()
 int
 invaderSpeed()
 {
-    return max(1500 - level*50, 50);
+    return max(INVADER_SPEED - level*50, 50);
 }
 
 /*
@@ -216,10 +217,10 @@ playerUpdate()
     {
         uBit.sleep(PLAYER_SPEED);
 
-        if(uBit.accelerometer.getX() < -400 && player.x > 0)
+        if(uBit.accelerometer.getX() < -300 && player.x > 0)
             player.x--;
 
-        if(uBit.accelerometer.getX() > 400 && player.x < 4)
+        if(uBit.accelerometer.getX() > 300 && player.x < 4)
             player.x++;
     }
 }
