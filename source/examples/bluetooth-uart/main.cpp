@@ -34,30 +34,30 @@ MicroBitUARTService *uart;
 
 int connected = 0;
 
-void onConnected(MicroBitEvent e)
+void onConnected(MicroBitEvent)
 {
-    
+
     uBit.display.scroll("C");
-    
+
     connected = 1;
-    
+
     // mobile app will send ASCII strings terminated with the colon character
     ManagedString eom(":");
-    
+
     while(1) {
         ManagedString msg = uart->readUntil(eom);
         uBit.display.scroll(msg);
     }
-    
+
 }
 
-void onDisconnected(MicroBitEvent e)
+void onDisconnected(MicroBitEvent)
 {
     uBit.display.scroll("D");
     connected = 0;
 }
 
-void onButtonA(MicroBitEvent e)
+void onButtonA(MicroBitEvent)
 {
     if (connected == 0) {
         return;
@@ -66,7 +66,7 @@ void onButtonA(MicroBitEvent e)
     uBit.display.scroll("Y");
 }
 
-void onButtonB(MicroBitEvent e)
+void onButtonB(MicroBitEvent)
 {
     if (connected == 0) {
         return;
@@ -75,7 +75,7 @@ void onButtonB(MicroBitEvent e)
     uBit.display.scroll("N");
 }
 
-void onButtonAB(MicroBitEvent e)
+void onButtonAB(MicroBitEvent)
 {
     if (connected == 0) {
         return;
@@ -95,10 +95,10 @@ int main()
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonB);
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_AB, MICROBIT_BUTTON_EVT_CLICK, onButtonAB);
 
-       
+
     // Note GATT table size increased from default in MicroBitConfig.h
     // #define MICROBIT_SD_GATT_TABLE_SIZE             0x500
-    uart = new MicroBitUARTService(*uBit.ble, 32, 32); 
+    uart = new MicroBitUARTService(*uBit.ble, 32, 32);
     uBit.display.scroll("UART ready");
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
