@@ -44,7 +44,7 @@ void onConnected(MicroBitEvent)
     // mobile app will send ASCII strings terminated with the colon character
     ManagedString eom(":");
 
-    while(1) {
+    while(connected == 1) {
         ManagedString msg = uart->readUntil(eom);
         uBit.display.scroll(msg);
     }
