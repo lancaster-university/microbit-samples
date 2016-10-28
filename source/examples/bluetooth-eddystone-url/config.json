@@ -1,0 +1,19 @@
+{
+    "microbit-dal": {
+        "bluetooth": {
+            "enabled": 1,
+            "pairing_mode": 0,
+            "private_addressing": 0,
+            "open": 0,
+            "whitelist": 0,
+            "advertising_timeout": 0,
+            "tx_power": 0,
+            "dfu_service": 0,
+            "event_service": 0,
+            "device_info_service": 0,
+            "eddystone_url": 1,
+            "eddystone_uid": 0
+        },
+        "gatt_table_size": "0x600"
+    }
+}
