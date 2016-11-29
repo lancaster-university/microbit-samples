@@ -69,7 +69,7 @@ void onButton(MicroBitEvent e)
     if (e.value == MICROBIT_BUTTON_EVT_DOUBLE_CLICK)
         uBit.serial.printf("DOUBLE_CLICK");
 
-    uBit.serial.printf("\n");
+    uBit.serial.printf("\r\n");
 }
 
 
