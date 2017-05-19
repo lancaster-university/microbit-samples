@@ -24,20 +24,53 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include "MicroBit.h"
+#include "jmx/jmx.h"
+#include "jmx/jmx_packets.h"
 
 MicroBit uBit;
+
+extern "C"
+{
+    void status_received(void* data)
+    {
+        StatusPacket* p = (StatusPacket*)data;
+
+        uBit.display.scroll(p->code);
+    }
+
+    void user_putc(char c)
+    {
+        uBit.serial.putc(c);
+    }
+
+    void jmx_packet_received(char* identifier)
+    {
+        uBit.display.scroll(identifier);
+    }
+}
+
+const char status_packet[] = { "\xdb""{\"status\":{\"code\":999}}""\xc0" };
 
 int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
 
-    // Insert your code here!
-    uBit.display.scroll("HELLO WORLD! :)");
+    jmx_init();
+
+    for(uint32_t i = 0; i < strlen(status_packet); i++)
+    {
+        jmx_state_track(status_packet[i]);
+    }
+
+    StatusPacket p = {
+        200
+    };
+
+    jmx_send("status", &p);
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
     // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
     // sit in the idle task forever, in a power efficient sleep.
     release_fiber();
 }
-
