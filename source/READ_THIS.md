@@ -1,6 +1,6 @@
 # About JMX
 
-JMX is a byte-byte JSON parser that converts utf8 characters from text form to an equivalent C struct.
+JMX is a byte-byte JSON parser that converts utf8 characters from text form to an equivalent C struct. The design of JMX was motivated by the need for a memory lightweight but usable solution for C/CPP based programs.
 
 The parser has a simple state machine `jmx_state_track` that tracks the progress of the packet that is currently digested, one should use the return code issued by this function to act appropriately.
 
@@ -66,3 +66,7 @@ JSON structures using JMX are limited to a depth of one and must take the form o
     }
 }
 ```
+
+An JMXActionItem is placed into a JMXActionTable that is looked up when a SLIP escape sequence is seen. If action item matches, characters will be digested regardless. If malformed JSON is detected, jmx will reset its state.
+
+Any further questions: j.devine@lancaster.ac.uk 
