@@ -126,7 +126,8 @@ void MicroBitDFUService::onDataWritten(const GattWriteCallbackParams *params)
 }
 
 //TODO Comment this...
-void MicroBitDFUService::partialFlash(uint32_t* address, void* from_buffer, 
+//TODO Add in check for checking address is in RAM.
+int MicroBitDFUService::partialFlash(uint32_t* address, void* from_buffer, 
                                int length, uint32_t* scratch_addr)
 {
     // Check if scratch exists and if it's address is in RAM Space.
@@ -134,10 +135,10 @@ void MicroBitDFUService::partialFlash(uint32_t* address, void* from_buffer,
     if(scratch_addr)
     {
         if(flash.checkAddressType(scratch_addr, length) == RAM_SEGMENT)
-            flash.flash_write(address, from_buffer, length, scratch_addr);
+            return flash.flash_write(address, from_buffer, length, scratch_addr);
     }
     else
-        flash.flash_write(address, from_buffer, length);
+        return flash.flash_write(address, from_buffer, length);
 }
 
 

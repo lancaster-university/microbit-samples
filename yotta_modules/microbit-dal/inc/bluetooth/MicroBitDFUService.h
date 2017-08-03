@@ -100,7 +100,7 @@ class MicroBitDFUService
     void onButtonB(MicroBitEvent e);
 
     //TODO Comment this...
-    void partialFlash(uint32_t* address, void* from_buffer, 
+    int partialFlash(uint32_t* address, void* from_buffer, 
                                int length, uint32_t* scratch_addr);
 };
 
