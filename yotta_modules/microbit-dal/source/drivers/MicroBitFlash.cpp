@@ -86,7 +86,7 @@ MicroBitFlash::MicroBitFlash()
   * Where O=Original byte, N = New byte.
   *
   * @param source to write from
-  * @param flash_address to write to
+  * @param flash_addr to write to
   * @param len number of uint8_t to check.
   * @return non-zero if erase required, zero otherwise.
   */
@@ -105,7 +105,7 @@ int MicroBitFlash::need_erase(uint8_t* source, uint8_t* flash_addr, int len)
 
 /**
   * Erase an entire page
-  * @param page_address address of first word of page
+  * @param pg_addr address of first word of page
   */
 void MicroBitFlash::erase_page(uint32_t* pg_addr) 
 {
@@ -142,10 +142,10 @@ void MicroBitFlash::erase_page(uint32_t* pg_addr)
   * Write to flash memory, assuming that a write is valid
   * (using need_erase).
   *
-  * @param page_address address of memory to write to.
+  * @param addr address of memory to write to.
   *     Must be word aligned.
   * @param buffer address to write from, must be word-aligned.
-  * @param len number of uint32_t words to write.
+  * @param size number of uint32_t words to write.
   */
 void MicroBitFlash::flash_burn(uint32_t* addr, uint32_t* buffer, int size) 
 { 
@@ -188,8 +188,8 @@ void MicroBitFlash::flash_burn(uint32_t* addr, uint32_t* buffer, int size)
   * Writes the given number of bytes to the address in flash specified.
   * Neither address nor buffer need be word-aligned.
   * @param address location in flash to write to.
-  * @param buffer location in memory to write from.
-  * @ength number of bytes to burn
+  * @param from_buffer location in memory to write from.
+  * @param length number of bytes to burn
   * @param scratch_addr if specified, scratch page to use. Use default
   *                     otherwise.
   * @return non-zero on sucess, zero on error.

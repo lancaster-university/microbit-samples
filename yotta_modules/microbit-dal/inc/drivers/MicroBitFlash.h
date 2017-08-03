@@ -27,7 +27,7 @@ class MicroBitFlash
       * Where O=Original byte, N = New byte.
       *
       * @param source to write from
-      * @param flash_address to write to
+      * @param flash_addr to write to
       * @param len number of uint8_t to check.
       * @return non-zero if erase required, zero otherwise.
       */
@@ -44,7 +44,7 @@ class MicroBitFlash
       * Neither address nor buffer need be word-aligned.
       * @param address location in flash to write to.
       * @param buffer location in memory to write from. 
-      * @length number of bytes to burn
+      * @param length number of bytes to burn
       * @param scratch_addr if specified, scratch page to use. Use default 
       *                     otherwise.
       * @return non-zero on sucess, zero on error.
