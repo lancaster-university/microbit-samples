@@ -136,6 +136,8 @@ int MicroBitDFUService::partialFlash(uint32_t* address, void* from_buffer,
     {
         if(flash.checkAddressType(scratch_addr, length) == RAM_SEGMENT)
             return flash.flash_write(address, from_buffer, length, scratch_addr);
+        else
+            return flash.checkAddressType(scratch_addr, length);
     }
     else
         return flash.flash_write(address, from_buffer, length);
