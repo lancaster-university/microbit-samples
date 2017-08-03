@@ -4,12 +4,11 @@
 #include <mbed.h>
 
 #define PAGE_SIZE 1024
-//TODO Replace these with their actual values.
-#define CODE_SEGMENT_START_ADDR  			0
-#define CODE_SEGMENT_END_ADDR      			10
+#define CODE_SEGMENT_START_ADDR  			0x00000000
+#define CODE_SEGMENT_END_ADDR      			0x00200000
 #define CODE_SEGMENT							1
-#define RAM_SEGMENT_START_ADDR				11
-#define RAM_SEGMENT_END_ADDR				20
+#define RAM_SEGMENT_START_ADDR				0x20000000
+#define RAM_SEGMENT_END_ADDR				0x20200000
 #define RAM_SEGMENT							2
 #define ERR_CROSSOVER_SEGMENT_ADDRESS 	-1
 #define ERR_NOT_RAM_OR_CODE					-2
