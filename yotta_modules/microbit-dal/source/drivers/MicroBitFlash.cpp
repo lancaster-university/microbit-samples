@@ -275,14 +275,14 @@ int MicroBitFlash::flash_write(void* address, void* from_buffer,
   */
 int MicroBitFlash::checkAddressType(uint32_t* address, int length) 
 {
-  if(address > (uint32_t*) CODE_SEGMENT_START_ADDR)
+  if(address >= (uint32_t*) CODE_SEGMENT_START_ADDR)
   {
     if((address + (uint32_t)length) < (uint32_t*) CODE_SEGMENT_END_ADDR)
       return CODE_SEGMENT;
     else
       return ERR_CROSSOVER_SEGMENT_ADDRESS;
   }
-  else if(address > (uint32_t*) RAM_SEGMENT_START_ADDR)
+  else if(address >= (uint32_t*) RAM_SEGMENT_START_ADDR)
   {
      if((address + (uint32_t)length) < (uint32_t*) RAM_SEGMENT_END_ADDR)
       return CODE_SEGMENT;

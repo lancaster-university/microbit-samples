@@ -10,6 +10,7 @@
 #define RAM_SEGMENT_START_ADDR				0x20000000
 #define RAM_SEGMENT_END_ADDR				0x20200000
 #define RAM_SEGMENT							2
+#define ERR_NULL_POINTER_ADDR                                0
 #define ERR_CROSSOVER_SEGMENT_ADDRESS 	-1
 #define ERR_NOT_RAM_OR_CODE					-2
 
