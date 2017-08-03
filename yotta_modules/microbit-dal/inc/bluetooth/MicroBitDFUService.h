@@ -39,6 +39,9 @@ DEALINGS IN THE SOFTWARE.
 #define MICROBIT_DFU_HISTOGRAM_WIDTH        5
 #define MICROBIT_DFU_HISTOGRAM_HEIGHT       5
 
+// Error MSG for Partial Flashing
+#define  ERR_OVERLAPPING_ADDR -1
+
 // UUIDs for our service and characteristics
 extern const uint8_t  MicroBitDFUServiceUUID[];
 extern const uint8_t  MicroBitDFUServiceControlCharacteristicUUID[];
