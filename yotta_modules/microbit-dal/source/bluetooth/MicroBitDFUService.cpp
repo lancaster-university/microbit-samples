@@ -157,7 +157,7 @@ int MicroBitDFUService::partialFlash(uint32_t* address, void* from_buffer,
     // This presumes that a defined scratch_addr is prefered but not compulsary.
     if(scratch_addr)
     {
-        if ((address + (uint32_t) length !< scratch_addr) || (scratch_addr + (uint32_t) length !< address))		// Check that address and scratch_addr don't overlap.
+        if (!((address + (uint32_t)length < scratch_addr) || (scratch_addr + (uint32_t)length < address)))		// Check that address and scratch_addr don't overlap.
             return ERR_OVERLAPPING_ADDR;
 
         if (flash.checkAddressType(scratch_addr, length) == RAM_SEGMENT)
