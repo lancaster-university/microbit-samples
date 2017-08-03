@@ -196,7 +196,7 @@ void MicroBitFlash::flash_burn(uint32_t* addr, uint32_t* buffer, int size)
   *
   * Example:
   * @code
-  * MicroBitFlash flash();
+  * MicroBitFlash flash;
   * uint32_t word = 0x01;
   * flash.flash_write((uint8_t*)0x38000, &word, sizeof(word))
   * @endcode
