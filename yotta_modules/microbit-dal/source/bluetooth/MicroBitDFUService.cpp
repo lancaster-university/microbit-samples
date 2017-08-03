@@ -125,7 +125,23 @@ void MicroBitDFUService::onDataWritten(const GattWriteCallbackParams *params)
     }
 }
 
-//TODO Comment this...
+/**
+  * Writes the given number of bytes to the address in flash specified.
+  * Neither address nor buffer need be word-aligned.
+  * @param address location in flash to write to.
+  * @param from_buffer location in memory to write from.
+  * @param length number of bytes to burn
+  * @param scratch_addr if specified, scratch page to use. Use default
+  *                     otherwise.
+  * @return either MICROBIT_OK or ERR message from flash_write or ERR message from checkAddressType.
+  *
+  * Example:
+  * @code
+  * MicroBitDFUService DFUFlash;
+  * uint32_t word = 0x01;
+  * DFUFlash.partialFlash(address, &dataToFlash, sizeof(dataToFlash), scratch_addr);
+  * @endcode
+  */
 //TODO Add in check for checking address is in RAM.
 //TODO Check that address and scratch_addr don't overlap.
 //TODO Check that RAM_SEGMENT is not in ints for flash_write, otherwise change RAM_SEGMENT MSG.

@@ -80,7 +80,7 @@ class MicroBitFlash
       * Checks that the address given lies within either the "RAM" segment
       * or the "Code" segment of memory.
       * @param address location in flash it's attempting to write to.
-      * @length number of bytes it's attempting to burn
+      * @param length number of bytes it's attempting to burn
       * @return > 0 on sucess, < 1 on error.
       * 
       * Example:

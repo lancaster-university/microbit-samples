@@ -189,7 +189,7 @@ void MicroBitFlash::flash_burn(uint32_t* addr, uint32_t* buffer, int size)
   * Neither address nor buffer need be word-aligned.
   * @param address location in flash to write to.
   * @param buffer location in memory to write from.
-  * @length number of bytes to burn
+  * @ength number of bytes to burn
   * @param scratch_addr if specified, scratch page to use. Use default
   *                     otherwise.
   * @return non-zero on sucess, zero on error.
@@ -264,7 +264,7 @@ int MicroBitFlash::flash_write(void* address, void* from_buffer,
   * Checks that the address given lies within either the "RAM" segment
   * or the "Code" segment of memory.
   * @param address location in flash it's attempting to write to.
-  * @length number of bytes it's attempting to burn
+  * @param length number of bytes it's attempting to burn
   * @return > 0 on sucess, < 1 on error.
   * 
   * Example:
