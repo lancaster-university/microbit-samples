@@ -54,7 +54,7 @@ int main()
 
     //
     // Periodically read the accelerometer x and y values, and plot a 
-    // scaled version of this ont the display. 
+    // scaled version of this on the display. 
     //
     while(1)
     {
