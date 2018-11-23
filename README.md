@@ -96,6 +96,17 @@ Here is an example of `config.json` with all available options configured:
     }
 }
 ```
+##  Debug on Visual Studio Code (Windows)
+
+1. build sample. You can build "HELLO WORLD! :)" program.
+2. Copy microbit-samples\build\bbc-microbit-classic-gcc\source\microbit-samples-combined.hex to micro:bit.
+3. Launch the Visual Studio Code
+4. File -> Open Folder... and select "microbit-samples" folder.
+5. Set break point to "main()" function.
+6. View -> Debug (Ctrl + Shift + D)
+7. Debug -> Start Debugging (F5)
+
+![Debug on Visual Studio Code](/debugOnVisualStudioCode.gif)
 
 ## BBC Community Guidelines
 
