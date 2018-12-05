@@ -42,7 +42,7 @@ DEALINGS IN THE SOFTWARE.
 
 #if MICROBIT_BLE_ENABLED 
  #ifdef YOTTA_CFG
-  #error "This example needs BLE to be disabled. Use the yotta config.json in the proximit-heart directory to do this"
+  #error "This example needs BLE to be disabled. Use the yotta config.json in the proximity-heart directory to do this"
  #else
   #error "This example needs BLE to be disabled in the microbit config file in the microbit-dal: MicroBitConfig.h"
  #endif
