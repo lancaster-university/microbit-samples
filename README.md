@@ -49,7 +49,7 @@ In addition to supporting development in C/C++, the runtime is also designed spe
 
 ##  microbit-dal Configuration
 
-The DAL also contains a number of compile time options can be modified. A full list and explanation
+The DAL also contains a number of compile time options that can be modified. A full list and explanation
 can be found in our [documentation](http://lancaster-university.github.io/microbit-docs/advanced/#compile-time-options-with-microbitconfigh).
 
 Alternately, `yotta` can be used to configure the dal regardless of module/folder structure, through providing a
