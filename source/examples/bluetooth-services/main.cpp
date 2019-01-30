@@ -84,10 +84,6 @@ int main()
     // TX Power Level
     // 0-7 taken from tx_power in config.json
 
-
-    // Services/Pairing Config/Power Level
-    uBit.display.scroll("BLE ABDILMT/P/0");
-
     uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);
     uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_DISCONNECTED, onDisconnected);
 
@@ -97,6 +93,9 @@ int main()
     new MicroBitLEDService(*uBit.ble, uBit.display);
     new MicroBitMagnetometerService(*uBit.ble, uBit.compass);
     new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
+
+    // Services/Pairing Config/Power Level
+    uBit.display.scroll("BLE ABDILMT/P/0");
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
     // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
