@@ -30,11 +30,13 @@ MicroBit uBit;
 // we use events abd the 'connected' variable to keep track of the status of the Bluetooth connection
 void onConnected(MicroBitEvent)
 {
+    uBit.display.stopAnimation();
     uBit.display.print("C");
 }
 
 void onDisconnected(MicroBitEvent)
 {
+    uBit.display.stopAnimation();
     uBit.display.print("D");
 }
 
