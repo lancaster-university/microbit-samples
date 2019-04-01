@@ -27,15 +27,27 @@ DEALINGS IN THE SOFTWARE.
 
 MicroBit uBit;
 
-// we use events abd the 'connected' variable to keep track of the status of the Bluetooth connection
-void onConnected(MicroBitEvent)
-{
-    uBit.display.print("C");
-}
+#define NONE 0
+#define CONNECTED 'C'
+#define DISCONNECTED 'D'
 
-void onDisconnected(MicroBitEvent)
+uint8_t lastEvent = NONE;
+
+// An event handler for BLE connection events
+// We keep track of the last event to show the correct character after the initial info has been displayed
+void onBLEEvent(MicroBitEvent evt)
 {
-    uBit.display.print("D");
+    // Determine if the event originates from a connect or disconnect
+    switch(evt.value) {
+        case MICROBIT_BLE_EVT_CONNECTED:
+            lastEvent = CONNECTED;
+            break;
+        case MICROBIT_BLE_EVT_DISCONNECTED:
+            lastEvent = DISCONNECTED;
+            break;
+    }
+
+    uBit.display.printChar(lastEvent);
 }
 
 int main()
@@ -84,12 +96,7 @@ int main()
     // TX Power Level
     // 0-7 taken from tx_power in config.json
 
-
-    // Services/Pairing Config/Power Level
-    uBit.display.scroll("BLE ABDILMT/P/0");
-
-    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);
-    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_DISCONNECTED, onDisconnected);
+    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_EVT_ANY, onBLEEvent);
 
     new MicroBitAccelerometerService(*uBit.ble, uBit.accelerometer);
     new MicroBitButtonService(*uBit.ble);
@@ -97,6 +104,12 @@ int main()
     new MicroBitLEDService(*uBit.ble, uBit.display);
     new MicroBitMagnetometerService(*uBit.ble, uBit.compass);
     new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
+
+    // Services/Pairing Config/Power Level
+    uBit.display.scroll("BLE ABDILMT/P/0");
+    
+    if(lastEvent)
+        uBit.display.printChar(lastEvent);
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
     // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
