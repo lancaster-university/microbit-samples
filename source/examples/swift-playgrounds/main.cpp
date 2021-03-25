@@ -36,13 +36,6 @@ DEALINGS IN THE SOFTWARE.
 
 MicroBit    uBit;
 
-const uint8_t full_heart_arr[] {
-                          0, 1, 0, 1, 0,
-                          1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1,
-                          0, 1, 1, 1, 0,
-                          0, 0, 1, 0, 0, }; 
-
 const uint8_t small_heart_arr[] {
                           0, 0, 0, 0, 0,
                           0, 1, 0, 1, 0,
@@ -50,18 +43,17 @@ const uint8_t small_heart_arr[] {
                           0, 0, 1, 0, 0,
                           0, 0, 0, 0, 0, };
 
-MicroBitImage full_heart(5,5,full_heart_arr);
 MicroBitImage small_heart(5,5,small_heart_arr);
 
 // we use events abd the 'connected' variable to keep track of the status of the Bluetooth connection
 void onConnected(MicroBitEvent)
 {
-    uBit.display.print(full_heart);
+    uBit.display.print("C");
 }
 
 void onDisconnected(MicroBitEvent)
 {
-    uBit.display.print(small_heart);
+    uBit.display.print("D");
 }
 
 int main()
