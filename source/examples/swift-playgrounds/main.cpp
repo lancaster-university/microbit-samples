@@ -37,11 +37,11 @@ DEALINGS IN THE SOFTWARE.
 MicroBit    uBit;
 
 const uint8_t small_heart_arr[] {
-                          0, 0, 0, 0, 0,
-                          0, 1, 0, 1, 0,
-                          0, 1, 1, 1, 0,
-                          0, 0, 1, 0, 0,
-                          0, 0, 0, 0, 0, };
+                          0,  0,    0,    0,    0,
+                          0,  255,  0,    255,  0,
+                          0,  255,  255,  255,  0,
+                          0,  0,    255,  0,    0,
+                          0,  0,    0,    0,    0 };
 
 MicroBitImage small_heart(5,5,small_heart_arr);
 
@@ -60,6 +60,8 @@ int main()
 {
     // Initialise the micro:bit runtime.
     uBit.init();
+    uBit.display.setDisplayMode(DISPLAY_MODE_BLACK_AND_WHITE);
+    uBit.display.setBrightness(255);
 
     // Configuration Tips
     // Swift Playgrounds relies on the presence of the DFU service to intiate bonding, so
