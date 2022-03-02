@@ -40,7 +40,7 @@ void onData(MicroBitEvent)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);

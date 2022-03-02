@@ -49,7 +49,7 @@ int pixel_from_g(int value)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     //
