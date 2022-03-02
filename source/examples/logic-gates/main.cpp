@@ -106,7 +106,7 @@ void onShake(MicroBitEvent)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     // Register to receive events when the micro:bit is shaken.

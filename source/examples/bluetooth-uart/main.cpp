@@ -86,7 +86,7 @@ void onButtonAB(MicroBitEvent)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);

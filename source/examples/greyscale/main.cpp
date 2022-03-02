@@ -29,7 +29,7 @@ MicroBit uBit;
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     // Enable per pixel rendering, with 256 level of brightness per pixel.

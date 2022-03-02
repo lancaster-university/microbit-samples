@@ -131,7 +131,7 @@ void onData(MicroBitEvent)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     // Setup some button handlers to allow direct heartbeat control with buttons

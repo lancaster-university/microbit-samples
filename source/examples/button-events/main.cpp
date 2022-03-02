@@ -75,7 +75,7 @@ void onButton(MicroBitEvent e)
 
 int main()
 {
-    // Initialise the micro:bit runtime.
+    // Initialize the micro:bit runtime.
     uBit.init();
 
     // Register to receive events when any buttons are clicked, including the A+B virtual button (both buttons at once).
